@@ -12,3 +12,6 @@ __pycache__/
 
 # Terraform sensitive outputs
 outputs.tf
+
+# local files
+*.txt

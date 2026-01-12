@@ -9,3 +9,6 @@
 # Python
 __pycache__/
 .env
+
+# Terraform sensitive outputs
+outputs.tf

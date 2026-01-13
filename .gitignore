@@ -15,3 +15,4 @@ outputs.tf
 
 # local files
 *.txt
+!notes.txt

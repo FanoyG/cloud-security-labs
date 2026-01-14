@@ -30,7 +30,7 @@ Wildcard IAM policies are one of the most common misconfigurations found in real
 According to cloud security reports, IAM misconfigurations account for a significant percentage of cloud breaches, yet they require no technical exploit—just knowledge of AWS APIs. This lab teaches you to identify, understand, and prevent these dangerous misconfigurations before they reach production.
 
 <!-- 📸 IMAGE 2: Permissions policies (2) showing both AdministratorAccess and wildcard-policy-lab attached directly -->
-![Over-Privileged IAM User](../iam-wildcard-images/image-3.png)
+![Over-Privileged IAM User](./iam-wildcard-images/image-3.png)
 
 ---
 
@@ -179,7 +179,7 @@ Misconfigured IAM State Created
 ```
 
 <!-- 📸 IMAGE 6: AWS Console - wildcard-policy-lab JSON expanded showing Action: "*", Effect: "Allow", Resource: "*" -->
-![Wildcard Policy in AWS Console](../iam-wildcard-images/image-6.png)
+![Wildcard Policy in AWS Console](./iam-wildcard-images/image-6.png)
 
 This policy:
 - **Violates least privilege** principle
@@ -223,7 +223,7 @@ Performs read-only reconnaissance to assess blast radius:
 Even in empty accounts, successful enumeration proves over-privileged access.
 
 <!-- 📸 IMAGE 8: Terminal - terraform destroy plan showing aws_iam_access_key.test_key and aws_iam_policy.wildcard_policy will be destroyed -->
-![Enumeration Output](../iam-wildcard-images/image-11.png)
+![Enumeration Output](./iam-wildcard-images/image-11.png)
 
 #### 3. Privilege Escalation (`abuse.py`)
 
@@ -233,8 +233,8 @@ Demonstrates IAM privilege escalation by:
 
 This confirms complete account takeover without exploiting vulnerabilities — **only misconfiguration**.
 
-![Privilege Escalation Success](../iam-wildcard-images/image-2.png)
-![AdministratorAccess Attached](../iam-wildcard-images/image-7.png)
+![Privilege Escalation Success](./iam-wildcard-images/image-2.png)
+![AdministratorAccess Attached](./iam-wildcard-images/image-7.png)
 
 ### Core Python Design Principles
 
@@ -271,9 +271,9 @@ This is how real incidents unfold.
 - Manual detachment
 - Re-run `terraform destroy`
 
-![Terraform Destroy Error](../iam-wildcard-images/image-1.png)
+![Terraform Destroy Error](./iam-wildcard-images/image-1.png)
 
-![Terraform Destroy Status](../iam-wildcard-images/image-12.png)
+![Terraform Destroy Status](./iam-wildcard-images/image-12.png)
 
 **Lesson learned:** Terraform only manages what it creates — anything outside causes state drift.
 
@@ -311,7 +311,7 @@ After documentation:
 
 This demonstrates **responsible security testing**.
 
-![Final Cleanup](../iam-wildcard-images/image-13.png)
+![Final Cleanup](./iam-wildcard-images/image-13.png)
 
 ---
 

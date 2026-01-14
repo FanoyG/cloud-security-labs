@@ -1,4 +1,4 @@
-Local-only step (not committed)
+ ===> Local-only step (not committed)
 
 For demonstration, an access key was created locally:
 
@@ -9,3 +9,8 @@ resource "aws_iam_access_key" "test_key" {
 
 
 This block is intentionally excluded from version add it in iam_user.tf otherwise you will face error.
+<===
+
+===>
+In variable 'aws_profile' make sure to set your working aws profile otherwise you will face error.
+<===

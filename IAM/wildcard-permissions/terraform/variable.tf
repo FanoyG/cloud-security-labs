@@ -8,5 +8,5 @@ variable "aws_region" {
 variable "aws_profile" {
   description = "AWS CLI profile name used by Terraform"
   type        = string
-  default     = "Adilkhan601782"
+  default     = "YOUR-PROFILE"
 }

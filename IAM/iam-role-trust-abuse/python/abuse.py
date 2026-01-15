@@ -29,7 +29,7 @@ def main():
         print(f"    Exception: {e}")
 
     # ASSUME ROLE
-    response = assume_role("arn:aws:iam::389154195188:role/s3_bucket_list")
+    response = assume_role("YOUR_ROLE_ARN_HERE")
     role_creds = response["Credentials"]
 
     # ROLE SESSION — EXPECT FAILURE

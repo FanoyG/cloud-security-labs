@@ -20,7 +20,7 @@ def assume_role(role_arn):
 
 
 if __name__ == "__main__":
-    ROLE_ARN = "arn:aws:iam::389154195188:role/s3_bucket_list"
+    ROLE_ARN = "YOUR_ROLE_ARN_HERE"
 
     credentials = assume_role(ROLE_ARN)
     access_id = credentials["Credentials"]["AccessKeyId"]

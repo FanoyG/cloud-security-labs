@@ -9,6 +9,7 @@
 # Python
 __pycache__/
 .env
+.venv/
 
 # Terraform sensitive outputs
 outputs.tf
@@ -16,3 +17,4 @@ outputs.tf
 # local files
 *.txt
 !notes.txt
+!requirements.txt

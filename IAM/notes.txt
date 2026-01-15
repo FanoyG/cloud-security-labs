@@ -1,16 +1,66 @@
- ===> Local-only step (not committed)
+🔒 Local-Only Steps (Intentionally Not Committed)
+  - Some steps in this lab are executed locally only and are not committed to GitHub.
+  - This is intentional and aligns with real-world security practices.
 
-For demonstration, an access key was created locally:
+1️⃣ IAM Access Key Creation (Local Only):- For demonstration purposes, an IAM access key is created locally using Terraform:
 
-```hcl
+```
 resource "aws_iam_access_key" "test_key" {
   user = aws_iam_user.test_user.name
 }
+```
 
+⚠️ Important
+    - This resource is required locally to generate access keys for the attack simulation
+    - If this block is missing from iam.tf, Terraform will fail
+    - Access keys are never committed and are destroyed after the demo
+The generated credentials are used temporarily and stored in a local .env file.
 
-This block is intentionally excluded from version add it in iam_user.tf otherwise you will face error.
-<===
+2️⃣ Terraform Outputs (Intentionally Excluded)
 
-===>
-In variable 'aws_profile' make sure to set your working aws profile otherwise you will face error.
-<===
+Terraform outputs used to retrieve access keys are not committed.
+Reason:
+    - To avoid encouraging secret-exposure patterns
+    - Secrets should never exist in version control
+
+Outputs are retrieved locally using:
+      ```
+      terraform output
+      ```
+These values are then placed into a .env file for the Python attack simulation.
+
+3️⃣ .env File (Runtime Only)
+A .env file is used to store AWS credentials locally:
+    ```
+    AWS_ACCESS_KEY_ID=xxxxxxxx
+    AWS_SECRET_ACCESS_KEY=xxxxxxxx
+    AWS_DEFAULT_REGION=ap-south-1
+    ```
+  - .env is ignored via .gitignore
+  - This mimics real-world credential leakage scenarios
+  - Secrets are never committed
+
+4️⃣ AWS Profile Configuration (Required)
+
+In variables.tf, ensure the correct AWS CLI profile is set:
+    ```
+    variable "aws_profile" {
+      description = "AWS CLI profile name used by Terraform"
+    }
+    ```
+
+⚠️ Important
+  - The profile must exist locally (aws configure --profile <name>)
+  - Using the wrong or missing profile will cause Terraform errors
+
+5️⃣ Cleanup (Mandatory)
+
+After completing the demo, always destroy resources:
+    ```
+    terraform destroy
+    ```
+
+This ensures:
+    - No long-lived credentials remain active
+    - No accidental exposure
+    - Good security hygiene

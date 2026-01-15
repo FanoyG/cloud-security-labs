@@ -1,7 +1,7 @@
 variable "aws_profile" {
     description = "AWS CLI profile name used for the lab"
     type = string
-    default = "Adilkhan601782"
+    default = "YOUR-PROFILE"
 }
 
 variable "aws_region" {
